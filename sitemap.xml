@@ -8,8 +8,10 @@
 
 
 <url>
-  <loc>https://maxprofix.ca/</loc>
+  <loc>https://www.maxprofix.ca/</loc>
   <lastmod>2025-06-02T05:03:18+00:00</lastmod>
+      <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
 </url>
 
 
