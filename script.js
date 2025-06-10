@@ -103,7 +103,17 @@ const initVideoGallery = () => {
 
 // Initialize video gallery when the DOM is loaded
 document.addEventListener("DOMContentLoaded", initVideoGallery);
+// Hide video thumbnails after playback starts
+const initVideoThumbnails = () => {
+  document.querySelectorAll("video").forEach((video) => {
+    video.addEventListener("play", function () {
+      this.removeAttribute("poster");
+    });
+  });
+};
 
+// Initialize video thumbnails when the DOM is loaded
+document.addEventListener("DOMContentLoaded", initVideoThumbnails);
 // Form validation
 const contactForm = document.querySelector(".contact-form");
 if (contactForm) {
