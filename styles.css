@@ -1121,3 +1121,31 @@ main {
   line-height: 1.6;
 }
 
+.hero-buttons .cta-button {
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 1.2rem;
+  min-width: 90px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 480px) {
+  .hero-buttons .cta-button {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.9rem;
+    min-width: 70px;
+  }
+}
+
+.hero-social-icons {
+  display: flex;
+  gap: 1.5rem;
+  margin-left: 1.2rem;
+  align-items: center;
+}
+.hero-social-icons div {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+
