@@ -1463,3 +1463,95 @@ main {
   font-size: 1.5rem;
   cursor: pointer;
 }
+
+
+
+/* Terms Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000000;
+  padding: 1.5rem;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-content ul ,li{
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.modal-content ul ul {
+  list-style: none;
+  padding-left: 30px;
+  margin-left: 0;
+}
+
+.modal-panel {
+  background: #fff;
+  color: #333;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 14px;
+  padding: 1.8rem 2rem;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.modal-close {
+  position: absolute;
+  right: 1rem;
+  top: 0.6rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.modal-content {
+  margin-top: 1rem;
+  font-size: 0.6rem;
+  line-height: 1.55;
+}
+
+.terms-btn {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #2f2f2f;
+  background: linear-gradient(#ffffff, #ffecb9 , #f4dcbc);
+  border: 0.5px solid #b5b5b5;
+  border-radius: 20px;
+  padding: 1rem 1rem;
+  cursor: pointer;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+}
+
+.terms-btn:hover {
+  background: linear-gradient(#ffffff, #e2e2e2);
+  border-color: #9b9b9b;
+}
+
+.terms-btn:active {
+  transform: translateY(1px);
+}
+
+.terms-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.terms-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
