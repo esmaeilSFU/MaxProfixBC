@@ -1513,8 +1513,14 @@ main {
   background: none;
   border: none;
   font-size: 2rem;
-  color: #333;
+  color: #5d5d5d;
   cursor: pointer;
+}
+
+.modal-close:hover{
+  background: #ffffff;
+  scale: 1.25;
+    color: #000000;
 }
 
 .modal-content {
