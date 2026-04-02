@@ -274,55 +274,9 @@ const googleMapsUrl = "https://maps.app.goo.gl/dcXpVWVAwmPAqEXf9";
   const lightboxContent = lightbox?.querySelector(".lightbox-content");
   const closeButtons = lightbox?.querySelectorAll("[data-lightbox-close]");
   let currentMediaEl = null;
-  const remoteGallery = window.MAXPROFIX_GALLERY || {};
-  const galleryConfig = {
-    maxItems: 60,
-    minDigits: 2,
-    imageDirs: [
-      ...(remoteGallery.imageDirs || []),
-      "./assets/gallery/images",
-      "./assets/images",
-    ],
-    videoDirs: [
-      ...(remoteGallery.videoDirs || []),
-      "./assets/gallery/videos",
-      "./assets/videos",
-    ],
-    thumbnailDirs: [
-      ...(remoteGallery.thumbnailDirs || []),
-      "./assets/gallery/video-thumbnails",
-      "./assets/images/video-thumbnails",
-    ],
-    imageExtensions: ["jpg", "jpeg", "png", "webp", "avif"],
-    videoExtensions: ["mp4", "webm", "mov", "m4v"],
-  };
-
-  function probeImageExists(src) {
-    return new Promise((resolve) => {
-      const img = new Image();
-      img.onload = () => resolve(true);
-      img.onerror = () => resolve(false);
-      img.src = src;
-    });
-  }
-
-  function probeVideoExists(src) {
-    return new Promise((resolve) => {
-      const video = document.createElement("video");
-      video.preload = "metadata";
-      video.onloadedmetadata = () => resolve(true);
-      video.onerror = () => resolve(false);
-      video.src = src;
-    });
-  }
-
-  async function findFirstExisting(basePath, extensions, probeFn) {
-    for (const ext of extensions) {
-      const candidate = `${basePath}.${ext}`;
-      if (await probeFn(candidate)) return candidate;
-    }
-    return null;
-  }
+  const galleryItems = Array.isArray(window.MAXPROFIX_GALLERY_ITEMS)
+    ? window.MAXPROFIX_GALLERY_ITEMS
+    : [];
 
   function createGalleryCard(item) {
     const button = document.createElement("button");
@@ -362,89 +316,28 @@ const googleMapsUrl = "https://maps.app.goo.gl/dcXpVWVAwmPAqEXf9";
     return button;
   }
 
-  async function collectGalleryItems() {
-    const mediaItems = [];
-    const seen = new Set();
-    let missingStreak = 0;
-
-    for (let i = 1; i <= galleryConfig.maxItems; i += 1) {
-      const padded = String(i).padStart(galleryConfig.minDigits, "0");
-      const ids = padded === String(i) ? [padded] : [padded, String(i)];
-      let foundForCurrentIndex = false;
-
-      for (const id of ids) {
-        for (const imageDir of galleryConfig.imageDirs) {
-          const imageSrc = await findFirstExisting(
-            `${imageDir}/${id}`,
-            galleryConfig.imageExtensions,
-            probeImageExists
-          );
-          if (imageSrc && !seen.has(imageSrc)) {
-            seen.add(imageSrc);
-            foundForCurrentIndex = true;
-            mediaItems.push({
-              type: "image",
-              src: imageSrc,
-              previewSrc: imageSrc,
-              previewType: "image",
-              alt: `Bathtub refinishing before and after ${id}`,
-            });
-            break;
-          }
-        }
-
-        for (const videoDir of galleryConfig.videoDirs) {
-          const videoSrc = await findFirstExisting(
-            `${videoDir}/${id}`,
-            galleryConfig.videoExtensions,
-            probeVideoExists
-          );
-          if (!videoSrc || seen.has(videoSrc)) continue;
-
-          let thumbnailSrc = null;
-          for (const thumbDir of galleryConfig.thumbnailDirs) {
-            thumbnailSrc = await findFirstExisting(
-              `${thumbDir}/${id}`,
-              galleryConfig.imageExtensions,
-              probeImageExists
-            );
-            if (thumbnailSrc) break;
-          }
-
-          seen.add(videoSrc);
-          foundForCurrentIndex = true;
-          mediaItems.push({
-            type: "video",
-            src: videoSrc,
-            previewSrc: thumbnailSrc || "",
-            previewType: thumbnailSrc ? "image" : "video",
-            alt: `Bathtub refinishing video ${id}`,
-          });
-          break;
-        }
-      }
-
-      if (foundForCurrentIndex) {
-        missingStreak = 0;
-      } else {
-        missingStreak += 1;
-      }
-
-      if (missingStreak >= 12) break;
-    }
-
-    return mediaItems;
-  }
-
-  async function renderDynamicGallery() {
+  function renderDynamicGallery() {
     if (!galleryGrid) return;
-
-    const mediaItems = await collectGalleryItems();
     galleryGrid.innerHTML = "";
 
-    mediaItems.forEach((item) => {
-      galleryGrid.appendChild(createGalleryCard(item));
-    });
+    galleryItems
+      .filter((item) => item && item.src && (item.type === "image" || item.type === "video"))
+      .forEach((item) => {
+        const normalizedItem =
+          item.type === "video"
+            ? {
+                ...item,
+                previewSrc: item.previewSrc || "",
+                previewType: item.previewSrc ? "image" : "video",
+              }
+            : {
+                ...item,
+                previewSrc: item.src,
+                previewType: "image",
+              };
+
+        galleryGrid.appendChild(createGalleryCard(normalizedItem));
+      });
   }
 
   renderDynamicGallery();

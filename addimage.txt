@@ -1,0 +1,1 @@
+From now on, adding media is simple: add the file, add one object in gallery-data.js, and the gallery will pick it up immediately. For videos, keep adding a thumbnail image too so the grid stays fast.

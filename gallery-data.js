@@ -1,0 +1,96 @@
+window.MAXPROFIX_GALLERY_ITEMS = [
+  {
+    type: "image",
+    src: "./assets/images/01.jpg",
+    alt: "Bathtub refinishing before and after 01",
+  },
+  {
+    type: "image",
+    src: "./assets/images/02.jpg",
+    alt: "Bathtub refinishing before and after 02",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/01.mp4",
+    previewSrc: "./assets/images/video-thumbnails/01.jpg",
+    alt: "Bathtub refinishing video 01",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/02.mp4",
+    previewSrc: "./assets/images/video-thumbnails/02.jpg",
+    alt: "Bathtub refinishing video 02",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/03.mp4",
+    previewSrc: "./assets/images/video-thumbnails/03.jpg",
+    alt: "Bathtub refinishing video 03",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/04.mp4",
+    previewSrc: "./assets/images/video-thumbnails/04.jpg",
+    alt: "Bathtub refinishing video 04",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/05.mp4",
+    previewSrc: "./assets/images/video-thumbnails/05.jpg",
+    alt: "Bathtub refinishing video 05",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/06.mp4",
+    previewSrc: "./assets/images/video-thumbnails/06.jpg",
+    alt: "Bathtub refinishing video 06",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/07.mp4",
+    previewSrc: "./assets/images/video-thumbnails/07.jpg",
+    alt: "Bathtub refinishing video 07",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/08.mp4",
+    previewSrc: "./assets/images/video-thumbnails/08.jpg",
+    alt: "Bathtub refinishing video 08",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/09.mp4",
+    previewSrc: "./assets/images/video-thumbnails/09.jpg",
+    alt: "Bathtub refinishing video 09",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/10.mp4",
+    previewSrc: "./assets/images/video-thumbnails/10.jpg",
+    alt: "Bathtub refinishing video 10",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/11.mp4",
+    previewSrc: "./assets/images/video-thumbnails/11.jpg",
+    alt: "Bathtub refinishing video 11",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/12.mp4",
+    previewSrc: "./assets/images/video-thumbnails/12.jpg",
+    alt: "Bathtub refinishing video 12",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/13.mp4",
+    previewSrc: "./assets/images/video-thumbnails/13.jpg",
+    alt: "Bathtub refinishing video 13",
+  },
+  {
+    type: "video",
+    src: "./assets/videos/14.mp4",
+    previewSrc: "./assets/images/video-thumbnails/14.jpg",
+    alt: "Bathtub refinishing video 14",
+  },
+];
