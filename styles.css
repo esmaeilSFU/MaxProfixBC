@@ -34,6 +34,150 @@ body {
   background-color: var(--background);
 }
 
+/* Container and Section Styles */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  padding: 6rem 0 4rem;
+}
+
+.section-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 2rem;
+  text-align: center;
+  margin: 0 0 0.25rem;
+  color: var(--text-color);
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--light-text);
+  margin: 0 0 2rem;
+}
+
+.city-intro {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Services */
+.services {
+}
+.serivce-cards{
+    max-width: 900px;
+  margin: 0 auto 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  background-color: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem 1.25rem;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+  color: var(--text-color);
+  transition: box-shadow 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+}
+
+.service-card:hover,
+.service-card:focus-visible {
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-3px);
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.service-icon {
+  font-size: 1.75rem;
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+}
+
+.service-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  font-family: "Inter", sans-serif;
+}
+
+.service-desc {
+  font-size: 0.9rem;
+  color: var(--light-text);
+}
+
+/* Package List */
+.package-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+.package-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* FAQ */
+.faq {
+  padding: 6rem 0 4rem;
+  background: var(--light-background);
+}
+
+.faq-item {
+  margin-bottom: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 1.5rem;
+  color: var(--light-text);
+}
+
+.faq-item[open] .faq-answer {
+  max-height: 200px;
+  padding-bottom: 1rem;
+}
+
+.faq-icon {
+  transition: transform 0.3s ease;
+}
+
+.faq-item[open] .faq-icon {
+  transform: rotate(180deg);
+}
+
 /* Header and Navigation */
 .header {
   position: fixed;
@@ -117,6 +261,64 @@ body {
 
 .nav-links a:hover::after {
   width: 100%;
+}
+
+/* Nav dropdown */
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-family: inherit;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  left: 0;
+  min-width: 220px;
+  max-height: min(70vh, 420px);
+  overflow-y: auto;
+  background: var(--background);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow-medium);
+  padding: 0.5rem;
+  display: none;
+  z-index: 1001;
+}
+
+.nav-dropdown.open .nav-dropdown-menu {
+  display: block;
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.nav-dropdown-menu a:hover,
+.nav-dropdown-menu a:focus-visible {
+  background: var(--light-background);
+  color: var(--primary-color);
 }
 
 /* Mobile Menu Button (base) */
@@ -314,11 +516,17 @@ body {
   background-color: var(--light-background);
 }
 
-.services h2 {
+.services h2,
+#services > h2 {
   text-align: center;
   margin-bottom: 2rem;
   font-size: 2rem;
   font-weight: 600;
+}
+
+#services > h2 {
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .services-grid {
@@ -844,6 +1052,24 @@ body {
     z-index: 3500;
     align-items: center;
     justify-content: center;
+  }
+
+  .nav-dropdown {
+    width: 100%;
+  }
+
+  .nav-dropdown-toggle {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .nav-dropdown-menu {
+    position: static;
+    box-shadow: none;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    margin-top: 0.5rem;
   }
 
   .mobile-menu-btn {

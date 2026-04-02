@@ -22,13 +22,53 @@ function smoothScrollTo(selector) {
 document.addEventListener("DOMContentLoaded", () => {
   const mobileBtn = document.querySelector(".mobile-menu-btn");
   const navLinks = document.querySelector(".nav-links");
+  const navLinkItems = navLinks?.querySelectorAll("a");
 
   if (mobileBtn && navLinks) {
     mobileBtn.addEventListener("click", () => {
-      mobileBtn.classList.toggle("active");
-      navLinks.classList.toggle("active");
+      const isOpen = mobileBtn.classList.toggle("active");
+      navLinks.classList.toggle("active", isOpen);
+      mobileBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navLinkItems?.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileBtn.classList.remove("active");
+        navLinks.classList.remove("active");
+        mobileBtn.setAttribute("aria-expanded", "false");
+      });
     });
   }
+
+  // Nav dropdown toggle
+  const dropdownToggle = document.querySelector(".nav-dropdown-toggle");
+  const dropdown = document.querySelector(".nav-dropdown");
+
+  if (dropdownToggle && dropdown) {
+    dropdownToggle.addEventListener("click", () => {
+      const isOpen = dropdown.classList.toggle("open");
+      dropdownToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("open");
+        dropdownToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  const faqQuestions = document.querySelectorAll(".faq-question");
+  faqQuestions.forEach((question) => {
+    question.addEventListener("click", () => {
+      const faqItem = question.closest(".faq-item");
+      const isOpen = faqItem?.hasAttribute("open");
+
+      faqItem?.toggleAttribute("open", !isOpen);
+      question.setAttribute("aria-expanded", String(!isOpen));
+    });
+  });
  
   // Terms & Conditions modal elements
   const openBtn = document.getElementById("open-terms");
@@ -229,11 +269,185 @@ const googleMapsUrl = "https://maps.app.goo.gl/dcXpVWVAwmPAqEXf9";
   /* ===========================================================
      GALLERY LIGHTBOX (FlavourFeast-style)
   ========================================================== */
-  const galleryItems = document.querySelectorAll(".gallery-item[data-lightbox]");
+  const galleryGrid = document.getElementById("galleryGrid");
   const lightbox = document.querySelector(".lightbox");
   const lightboxContent = lightbox?.querySelector(".lightbox-content");
   const closeButtons = lightbox?.querySelectorAll("[data-lightbox-close]");
   let currentMediaEl = null;
+  const remoteGallery = window.MAXPROFIX_GALLERY || {};
+  const galleryConfig = {
+    maxItems: 60,
+    minDigits: 2,
+    imageDirs: [
+      ...(remoteGallery.imageDirs || []),
+      "./assets/gallery/images",
+      "./assets/images",
+    ],
+    videoDirs: [
+      ...(remoteGallery.videoDirs || []),
+      "./assets/gallery/videos",
+      "./assets/videos",
+    ],
+    thumbnailDirs: [
+      ...(remoteGallery.thumbnailDirs || []),
+      "./assets/gallery/video-thumbnails",
+      "./assets/images/video-thumbnails",
+    ],
+    imageExtensions: ["jpg", "jpeg", "png", "webp", "avif"],
+    videoExtensions: ["mp4", "webm", "mov", "m4v"],
+  };
+
+  function probeImageExists(src) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
+      img.src = src;
+    });
+  }
+
+  function probeVideoExists(src) {
+    return new Promise((resolve) => {
+      const video = document.createElement("video");
+      video.preload = "metadata";
+      video.onloadedmetadata = () => resolve(true);
+      video.onerror = () => resolve(false);
+      video.src = src;
+    });
+  }
+
+  async function findFirstExisting(basePath, extensions, probeFn) {
+    for (const ext of extensions) {
+      const candidate = `${basePath}.${ext}`;
+      if (await probeFn(candidate)) return candidate;
+    }
+    return null;
+  }
+
+  function createGalleryCard(item) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `gallery-item ${
+      item.type === "video" ? "gallery-item--video" : "gallery-item--img"
+    } reveal visible`;
+    button.setAttribute("role", "listitem");
+    button.setAttribute("data-lightbox", item.src);
+
+    if (item.type === "video") {
+      button.setAttribute("data-type", "video");
+    }
+
+    if (item.previewType === "video") {
+      const previewVideo = document.createElement("video");
+      previewVideo.src = item.src;
+      previewVideo.muted = true;
+      previewVideo.playsInline = true;
+      previewVideo.preload = "metadata";
+      previewVideo.setAttribute("aria-hidden", "true");
+      button.appendChild(previewVideo);
+    } else {
+      const img = document.createElement("img");
+      img.src = item.previewSrc;
+      img.alt = item.alt;
+      img.loading = "lazy";
+      button.appendChild(img);
+    }
+
+    if (item.type === "video") {
+      const playIcon = document.createElement("span");
+      playIcon.className = "play-icon";
+      button.appendChild(playIcon);
+    }
+
+    return button;
+  }
+
+  async function collectGalleryItems() {
+    const mediaItems = [];
+    const seen = new Set();
+    let missingStreak = 0;
+
+    for (let i = 1; i <= galleryConfig.maxItems; i += 1) {
+      const padded = String(i).padStart(galleryConfig.minDigits, "0");
+      const ids = padded === String(i) ? [padded] : [padded, String(i)];
+      let foundForCurrentIndex = false;
+
+      for (const id of ids) {
+        for (const imageDir of galleryConfig.imageDirs) {
+          const imageSrc = await findFirstExisting(
+            `${imageDir}/${id}`,
+            galleryConfig.imageExtensions,
+            probeImageExists
+          );
+          if (imageSrc && !seen.has(imageSrc)) {
+            seen.add(imageSrc);
+            foundForCurrentIndex = true;
+            mediaItems.push({
+              type: "image",
+              src: imageSrc,
+              previewSrc: imageSrc,
+              previewType: "image",
+              alt: `Bathtub refinishing before and after ${id}`,
+            });
+            break;
+          }
+        }
+
+        for (const videoDir of galleryConfig.videoDirs) {
+          const videoSrc = await findFirstExisting(
+            `${videoDir}/${id}`,
+            galleryConfig.videoExtensions,
+            probeVideoExists
+          );
+          if (!videoSrc || seen.has(videoSrc)) continue;
+
+          let thumbnailSrc = null;
+          for (const thumbDir of galleryConfig.thumbnailDirs) {
+            thumbnailSrc = await findFirstExisting(
+              `${thumbDir}/${id}`,
+              galleryConfig.imageExtensions,
+              probeImageExists
+            );
+            if (thumbnailSrc) break;
+          }
+
+          seen.add(videoSrc);
+          foundForCurrentIndex = true;
+          mediaItems.push({
+            type: "video",
+            src: videoSrc,
+            previewSrc: thumbnailSrc || "",
+            previewType: thumbnailSrc ? "image" : "video",
+            alt: `Bathtub refinishing video ${id}`,
+          });
+          break;
+        }
+      }
+
+      if (foundForCurrentIndex) {
+        missingStreak = 0;
+      } else {
+        missingStreak += 1;
+      }
+
+      if (missingStreak >= 12) break;
+    }
+
+    return mediaItems;
+  }
+
+  async function renderDynamicGallery() {
+    if (!galleryGrid) return;
+
+    const mediaItems = await collectGalleryItems();
+    galleryGrid.innerHTML = "";
+
+    mediaItems.forEach((item) => {
+      galleryGrid.appendChild(createGalleryCard(item));
+    });
+  }
+
+  renderDynamicGallery();
 
   function openLightbox(src, type = "image") {
     if (!lightbox || !lightboxContent) return;
@@ -288,13 +502,16 @@ const googleMapsUrl = "https://maps.app.goo.gl/dcXpVWVAwmPAqEXf9";
     document.body.style.overflow = "";
   }
 
-  // Click gallery items
-  galleryItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      const src = item.getAttribute("data-lightbox");
-      const type = item.dataset.type || "image";
-      openLightbox(src, type);
-    });
+  // Click gallery items (supports static + dynamic cards)
+  galleryGrid?.addEventListener("click", (e) => {
+    const item = e.target.closest(".gallery-item[data-lightbox]");
+    if (!item) return;
+
+    const src = item.getAttribute("data-lightbox");
+    const type = item.dataset.type || "image";
+    if (!src) return;
+
+    openLightbox(src, type);
   });
 
   // Close events
