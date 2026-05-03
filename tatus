@@ -1,0 +1,258 @@
+[33mcommit d7456691ef1508058a6db6f6fadc10c51d1ea833[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Esmaeil <ema63@sfu.ca>
+Date:   Mon Apr 6 12:45:31 2026 -0700
+
+    add homedepot tag
+
+[33mcommit 6ae576fed3c0a553dc0b48261be0462d057b070e[m
+Author: Esmaeil <ema63@sfu.ca>
+Date:   Thu Apr 2 12:00:36 2026 -0700
+
+    improve loading images
+
+[33mcommit 4cf620017c5e511aaddeb0fc420a306805f36934[m
+Author: Esmaeil <ema63@sfu.ca>
+Date:   Thu Apr 2 02:38:17 2026 -0700
+
+    some changes
+
+[33mcommit 9e669c27e6ae400e7e01fb05a954ca5bc86290fd[m
+Author: Esmaeil <ema63@sfu.ca>
+Date:   Thu Apr 2 02:31:02 2026 -0700
+
+    add city pages
+
+[33mcommit 7ff09f306d35ac069665d01f93ff4c39eae634f9[m
+Author: Esmaeil <ema63@sfu.ca>
+Date:   Wed Mar 4 14:13:45 2026 -0800
+
+    modify close modal style
+
+[33mcommit 5315a698e5c307be609b3b148005dea1003420cb[m
+Author: Esmaeil <ema63@sfu.ca>
+Date:   Wed Mar 4 14:04:35 2026 -0800
+
+    add instruction modal
+
+[33mcommit 33cea29dac2b94c80a3ff906d56aec4cf9c370ae[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Sun Mar 1 23:27:37 2026 -0800
+
+    Refactor Google tag scripts for clarity and structure
+
+[33mcommit 0f0fcbe0f45eb8056519085d8c967bafa7d2e05a[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Sun Mar 1 23:26:13 2026 -0800
+
+    Update Google tag in index.html
+    
+    Replaced old Google tag with a new one for tracking.
+
+[33mcommit 742c936290671228fefc6bff9e04518ab21ef3bb[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Mon Feb 16 23:14:32 2026 -0800
+
+    Add footer credit for website design
+    
+    Added footer credit for website design and development.
+
+[33mcommit bac17d6d6688dbb662c17e2b8ae2fce2296a067c[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Mon Feb 16 22:39:51 2026 -0800
+
+    Add Google Analytics tracking script to index.html
+
+[33mcommit 7c6941d61e9ea906bbe01b5102138ee08cded6b8[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Sun Feb 1 23:14:19 2026 -0800
+
+    Add files via upload
+
+[33mcommit 6093549e4325d2ac2fd02e2dcc2e510148cd4676[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Sun Feb 1 23:14:05 2026 -0800
+
+    Delete index.html
+
+[33mcommit b587499c05a0062fdddb11d5500849f06b5997d1[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Tue Jan 20 13:04:16 2026 -0800
+
+    Add files via upload
+
+[33mcommit 8f3bb9f913af0269e0dd80bf1d175736bdf5b420[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Tue Jan 20 13:04:07 2026 -0800
+
+    Delete index.html
+
+[33mcommit b68d618ab9241440c5b746ff561ef0eb15271fee[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Tue Jan 20 13:01:51 2026 -0800
+
+    Add files via upload
+
+[33mcommit f4a58ddd04c8fd8af6cf001a8280341ffd6eb1ad[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Tue Jan 20 13:01:41 2026 -0800
+
+    Delete index.html
+
+[33mcommit c1e1c5c62d1370940289a86a30702def888afd17[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Thu Dec 18 00:18:27 2025 -0800
+
+    Add files via upload
+
+[33mcommit 9e4301e7e25539407d59d8944b59a18cfd6d3a36[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Thu Dec 18 00:18:04 2025 -0800
+
+    Delete index.html
+
+[33mcommit 00a0957164e9562c5a561958c31e47012619ec41[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Tue Dec 2 01:30:36 2025 -0800
+
+    Add files via upload
+
+[33mcommit a2a79cd7fa6dc3649a439be33d5ada89621a100c[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Tue Dec 2 01:30:09 2025 -0800
+
+    Add files via upload
+
+[33mcommit 71fa4d7398d557dcd5e92e378d94a6ed325ebd12[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Tue Dec 2 01:29:35 2025 -0800
+
+    Add files via upload
+
+[33mcommit ac41164b4b7e817d7ab1987117e517fe8f3ed2fb[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Tue Dec 2 01:29:11 2025 -0800
+
+    Delete index.html
+
+[33mcommit 7a51df184e2c92d4b067f55acd011827f7a82669[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 20:58:33 2025 -0800
+
+    Update index.html
+
+[33mcommit 7654d51ce099c7ee3842145f1ce09dbee1f00626[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 20:54:05 2025 -0800
+
+    Add files via upload
+
+[33mcommit f0826c60908512be395761cdd32b5f92f9e5fb12[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 20:53:44 2025 -0800
+
+    Delete index.html
+
+[33mcommit cbca85f8a3e2d56424855aa9241eec783a13feac[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 18:15:46 2025 -0800
+
+    Add files via upload
+
+[33mcommit c558ed628e8caca8195df0274eb9e4e3c46272f9[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 18:15:35 2025 -0800
+
+    Delete index.html
+
+[33mcommit f09da3147772820a39dc7dfac55887309548cffe[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 18:15:24 2025 -0800
+
+    Add files via upload
+
+[33mcommit be5c2ce0654285334a87dded6406b107f2b909af[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 18:15:14 2025 -0800
+
+    Delete script.js
+
+[33mcommit f4c3ce253fbca9e372409a967bb836e7e8f54d4b[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 18:15:01 2025 -0800
+
+    Add files via upload
+
+[33mcommit 9514854358135cda5d31ef961c98aac4308acd92[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 18:14:47 2025 -0800
+
+    Delete styles.css
+
+[33mcommit b9f7d08788f8f4d2e4d75e2badb0583519f0affa[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 17:16:58 2025 -0800
+
+    Add files via upload
+
+[33mcommit 41f3cb2882b9446aa92b5449e7ae2008156ab7b8[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 17:16:46 2025 -0800
+
+    Delete styles.css
+
+[33mcommit a1ee872abfaad49c3aaff354145dda83bf8799c9[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 17:16:30 2025 -0800
+
+    Add files via upload
+
+[33mcommit fa5b3ab59f8917683de1b6df4d4764764716638e[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 17:16:18 2025 -0800
+
+    Delete script.js
+
+[33mcommit 05621b7c35c2c600a7f18d6a9c16561755ef74ed[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 17:15:57 2025 -0800
+
+    Add files via upload
+
+[33mcommit f336aa9bdbb269ee97d6a76e9c8fb394b88dd606[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Wed Nov 26 17:15:37 2025 -0800
+
+    Delete index.html
+
+[33mcommit 7963fbe34d1ed80cebc29fc68e7b7054827989ed[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Fri Nov 21 22:59:28 2025 -0800
+
+    Update index.html
+
+[33mcommit 554679b85be20a0e75df59ef6ff77131e6f9f3ac[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Fri Nov 21 22:28:25 2025 -0800
+
+    Correct spelling of 'MaxProfix' to 'MaxProFix'
+
+[33mcommit 7e61666f0740d232f7fff83b5d65e2dda4c23f63[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Sun Nov 16 00:06:56 2025 -0800
+
+    Adjust hero h1 font size for better responsiveness
+
+[33mcommit d35110ee5b76ed3ca07a88da59bc902b08cb1ecf[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Sun Nov 16 00:04:35 2025 -0800
+
+    Adjust hero h1 font size for responsiveness
+
+[33mcommit b129a688f42f4178b449a3643c795ca37dbf5f68[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.noreply.github.com>
+Date:   Sun Nov 16 00:02:41 2025 -0800
+
+    Adjust font size for hero h1 element
+
+[33mcommit 7acfff53922da72bd215f6df3a2736de27369636[m
+Author: esmaeilSFU <138071875+esmaeilSFU@users.no
