@@ -420,3 +420,65 @@ const googleMapsUrl = "https://maps.app.goo.gl/dcXpVWVAwmPAqEXf9";
     }
   });
 });
+
+/* ===========================================================
+   Contact Form (EmailJS - client side, no backend)
+   Docs: https://www.emailjs.com/docs/sdk/send/
+=========================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  // TODO: replace with your real EmailJS Service ID and Template ID
+  const EMAILJS_SERVICE_ID = "service_63deas8";
+  const EMAILJS_TEMPLATE_ID = "template_2xpb99p";
+
+  const submitButton = form.querySelector(".submit-button");
+  const statusEl = form.querySelector(".form-status");
+
+  const setStatus = (message, type) => {
+    if (!statusEl) return;
+    statusEl.textContent = message;
+    statusEl.className = "form-status" + (type ? ` form-status--${type}` : "");
+  };
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (typeof emailjs === "undefined") {
+      setStatus("Something went wrong. Please try again later.", "error");
+      return;
+    }
+
+    // Grabs every field on the form automatically, including the
+    // hidden "city" / "_subject" fields present on the city landing pages.
+    const formData = Object.fromEntries(new FormData(form).entries());
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+    setStatus("");
+
+    emailjs
+      .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formData)
+      .then(() => {
+        // Google Analytics (GA4) + Google Ads conversion tracking
+        if (typeof gtag === "function") {
+          gtag("event", "form_submit", {
+            event_category: "contact_form",
+            event_label: "Contact Form Submission",
+          });
+        }
+
+        form.reset();
+        setStatus("Thanks! Your message has been sent.", "success");
+      })
+      .catch((error) => {
+        console.error("EmailJS error:", error);
+        setStatus("Sorry, something went wrong. Please try again.", "error");
+      })
+      .finally(() => {
+        submitButton.disabled = false;
+        submitButton.textContent = "Send Message";
+      });
+  });
+});

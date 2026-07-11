@@ -13,6 +13,13 @@
     gtag('config', 'AW-17329182332');   // Google Ads
   </script>
 
+  <!-- EmailJS (client-side email sending, no backend needed) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    // TODO: replace with your real EmailJS Public Key (Account > General)
+    emailjs.init({ publicKey: "xG2UOhO4VyTc_14kO" });
+  </script>
+
     <script>
 	  var e, t, i, n, d, a;(e = window),(t = document),(i = "script"),(window.entuitiveSettings = { apiKey: 6c66f8eb41a5eb3006a2784597430774943a30a36f6f4b54ceb85b66b43f79d7 }),
 	    ((a = document.createElement("div")).id = "entuitive-widget"),document.getElementsByTagName("body")[0].appendChild(a),
@@ -756,11 +763,7 @@
               </p>
             </div>
           </div>
-          <form
-            class="contact-form"
-            action="https://formspree.io/f/xnndelpk"
-            method="POST"
-          >
+          <form id="contact-form" class="contact-form">
             <input type="text" name="name" placeholder="Your Name" required />
             <input
               type="email"
@@ -775,6 +778,7 @@
               required
             ></textarea>
             <button type="submit" class="submit-button">Send Message</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
           </form>
         </div>
         <div class="map-container" style="margin-top: 4rem">
@@ -975,20 +979,4 @@
 
     <!-- Lightbox for gallery (FlavourFeast style) -->
     <div class="lightbox" aria-hidden="true">
-      <div class="lightbox-content">
-        <button
-          class="lightbox-close"
-          type="button"
-          data-lightbox-close
-          aria-label="Close"
-        >
-          &times;
-        </button>
-        <!-- JS will inject <img> or <video> here -->
-      </div>
-    </div>
-  </body>
-</html>
-
-
-
+      <div class="lig
